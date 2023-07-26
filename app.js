@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const port = 3000; // เลือกพอร์ตของเซิร์ฟเวอร์
 
 // เปิดใช้งานเฟรมเวิร์ค Express.js เพื่อส่งไฟล์และรันเว็บไซต์
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname,'dist')));
 
 // เมื่อมีคำขอ GET ที่ root path (/) ให้ส่งไฟล์ index.html กลับไปยังเบราว์เซอร์
 app.get('/', (req, res) => {
-  res.send ('/')
+  res.render ('index')
 });
 
 // เริ่มต้นเซิร์ฟเวอร์
